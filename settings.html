@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CopyShield Settings</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">C</span> CopyShield</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">D</span> Dashboard</a>
+      <a class="nav-item" href="reports.html"><span class="nav-icon">R</span> Reports</a>
+      <a class="nav-item" href="sources.html"><span class="nav-icon">S</span> Sources</a>
+      <a class="nav-item" href="team.html"><span class="nav-icon">T</span> Team</a>
+      <a class="nav-item active" href="settings.html"><span class="nav-icon">A</span> Settings</a>
+      <a class="nav-item" href="about.html"><span class="nav-icon">I</span> About</a>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="ghost-btn sign-out-btn" type="button" data-sign-out>Sign Out</button>
+      <div class="status-pill"><b>Workspace</b><br>Academic review mode active</div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Preferences</div>
+        <h2>Workspace Settings</h2>
+        <p>Control the visible review options for the CopyShield workspace.</p>
+      </div>
+    </div>
+    <section class="card">
+      <div class="settings-form">
+        <div class="toggle-row"><div><b>Journal matching</b><br><span style="color:var(--muted);font-size:13px;">Include academic collections</span></div><span class="toggle"></span></div>
+        <div class="toggle-row"><div><b>AI detection</b><br><span style="color:var(--muted);font-size:13px;">Show detection metadata</span></div><span class="toggle"></span></div>
+        <div class="toggle-row"><div><b>PDF exports</b><br><span style="color:var(--muted);font-size:13px;">Allow report downloads</span></div><span class="toggle"></span></div>
+        <div class="toggle-row"><div><b>Source tables</b><br><span style="color:var(--muted);font-size:13px;">Show matched source rows</span></div><span class="toggle"></span></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script type="module" src="auth-guard.js"></script>
+</body>
+</html>

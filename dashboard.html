@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CopyShield Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">C</span> CopyShield</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-item active" href="dashboard.html"><span class="nav-icon">D</span> Dashboard</a>
+      <a class="nav-item" href="reports.html"><span class="nav-icon">R</span> Reports</a>
+      <a class="nav-item" href="sources.html"><span class="nav-icon">S</span> Sources</a>
+      <a class="nav-item" href="team.html"><span class="nav-icon">T</span> Team</a>
+      <a class="nav-item" href="settings.html"><span class="nav-icon">A</span> Settings</a>
+      <a class="nav-item" href="about.html"><span class="nav-icon">I</span> About</a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <button class="ghost-btn sign-out-btn" type="button" data-sign-out>Sign Out</button>
+      <div class="status-pill"><b>Workspace</b><br>Academic review mode active</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Review console</div>
+        <h2>Plagiarism Report</h2>
+        <p>Upload a document, run a check, and review the generated report.</p>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-btn" onclick="startScan()">Rescan</button>
+        <button onclick="downloadPDF()">Download</button>
+      </div>
+    </div>
+
+    <section class="dashboard-grid">
+      <div>
+        <div class="card hero-card">
+          <div>
+            <div class="eyebrow">Document intelligence</div>
+            <h3>One place to scan, review, and hand off polished originality reports.</h3>
+            <p>The interface is built like a SaaS dashboard while keeping the existing local report generation behavior intact.</p>
+            <div class="top-actions">
+              <label class="button-like" for="fileInput">Choose File</label>
+              <button class="ghost-btn" onclick="startScan()">Run Check</button>
+            </div>
+          </div>
+          <div class="scan-visual" aria-hidden="true"></div>
+        </div>
+
+        <div class="card upload-panel">
+          <div>
+            <div class="eyebrow">Upload</div>
+            <h3>Check a document</h3>
+            <p>Choose a TXT or DOCX file, then run the report from this workspace.</p>
+            <div id="loading"></div>
+          </div>
+          <div class="upload-box">
+            <label for="fileInput">Upload document</label>
+            <small>Accepts TXT and DOCX files for the existing scan flow.</small>
+            <input type="file" id="fileInput">
+            <div class="upload-actions">
+              <button onclick="startScan()">Check</button>
+            </div>
+          </div>
+          <div class="preview">
+            Document preview
+            <div class="preview-window"></div>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary"><span>Documents reviewed</span><strong>124</strong></div>
+          <div class="summary"><span>Average uniqueness</span><strong id="averageUnique">--%</strong></div>
+          <div class="summary"><span>Review queues</span><strong>7</strong></div>
+        </div>
+
+        <div class="card report-card">
+          <div class="report-header">
+            <div>
+              <div class="eyebrow">Generated report</div>
+              <h3>Originality analysis</h3>
+              <p id="reportSummary">Run a check to generate a detailed downloadable report.</p>
+            </div>
+            <div class="report-meta">
+              <span>Generated</span>
+              <strong id="reportDate">--</strong>
+            </div>
+          </div>
+
+          <div class="tabs">
+            <div class="tab active" onclick="showTab('overview',event)">Overview</div>
+            <div class="tab" onclick="showTab('sources',event)">Sources</div>
+            <div class="tab" onclick="showTab('details',event)">Details</div>
+          </div>
+
+          <div id="overviewTab">
+            <div class="report-overview">
+              <div class="circle" id="score">--%</div>
+              <div class="report-facts">
+                <div class="fact"><span>Document</span><strong id="docName"></strong></div>
+                <div class="fact"><span>Words</span><strong id="words"></strong></div>
+                <div class="fact"><span>Characters</span><strong id="chars"></strong></div>
+                <div class="fact"><span>Unique</span><strong id="unique"></strong></div>
+                <div class="fact"><span>Plagiarism</span><strong id="plag"></strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="sourcesTab" style="display:none;">
+            <table>
+              <thead>
+                <tr><th>#</th><th>Source</th><th>Words</th><th>%</th></tr>
+              </thead>
+              <tbody id="sources"></tbody>
+            </table>
+          </div>
+
+          <div id="detailsTab" style="display:none;">
+            <div class="detail-list">
+              <div class="fact"><span>Top keyword</span><strong id="topKeyword"></strong></div>
+              <div class="fact"><span>Scan depth</span><strong>Internet + Journals</strong></div>
+              <div class="fact"><span>Database</span><strong>5M+ sources</strong></div>
+              <div class="fact"><span>AI Detection</span><strong>Enabled</strong></div>
+            </div>
+          </div>
+
+          <div class="detailed-report">
+            <div class="report-section">
+              <div class="eyebrow">Executive summary</div>
+              <div class="detail-list">
+                <div class="fact"><span>Originality verdict</span><strong id="originalityVerdict">Awaiting scan</strong></div>
+                <div class="fact"><span>Match level</span><strong id="matchLevel">--</strong></div>
+                <div class="fact"><span>Strongest source</span><strong id="strongestSource">--</strong></div>
+                <div class="fact"><span>Average source match</span><strong id="averageSourceMatch">--</strong></div>
+              </div>
+            </div>
+
+            <div class="report-section">
+              <div class="eyebrow">Key terms</div>
+              <div class="keyword-grid" id="keywordBadges">
+                <span class="keyword-chip">Run a scan</span>
+              </div>
+            </div>
+
+            <div class="report-section two-column-report">
+              <div>
+                <div class="eyebrow">Source analysis</div>
+                <p id="sourceSummary">Matched source details will appear after a document is checked.</p>
+              </div>
+              <div>
+                <div class="eyebrow">Review recommendations</div>
+                <ul class="recommendation-list" id="recommendations">
+                  <li>Upload a document to receive review notes.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <div class="eyebrow">Activity</div>
+        <h3>Review health</h3>
+        <div class="mini-chart">
+          <span style="height:46%"></span>
+          <span style="height:72%"></span>
+          <span style="height:58%"></span>
+          <span style="height:86%"></span>
+          <span style="height:66%"></span>
+          <span style="height:78%"></span>
+        </div>
+        <div class="list" style="margin-top:16px;">
+          <div class="list-item"><div><b>High confidence</b><span>Reports are ready for export</span></div><span class="badge">Live</span></div>
+          <div class="list-item"><div><b>Queue status</b><span>No stuck uploads detected</span></div><span class="badge">Clear</span></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script>
+<script type="module" src="auth-guard.js"></script>
+</body>
+</html>

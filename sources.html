@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CopyShield Sources</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">C</span> CopyShield</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">D</span> Dashboard</a>
+      <a class="nav-item" href="reports.html"><span class="nav-icon">R</span> Reports</a>
+      <a class="nav-item active" href="sources.html"><span class="nav-icon">S</span> Sources</a>
+      <a class="nav-item" href="team.html"><span class="nav-icon">T</span> Team</a>
+      <a class="nav-item" href="settings.html"><span class="nav-icon">A</span> Settings</a>
+      <a class="nav-item" href="about.html"><span class="nav-icon">I</span> About</a>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="ghost-btn sign-out-btn" type="button" data-sign-out>Sign Out</button>
+      <div class="status-pill"><b>Workspace</b><br>Academic review mode active</div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Source intelligence</div>
+        <h2>Reference Coverage</h2>
+        <p>Review the collections represented in the report workflow.</p>
+      </div>
+    </div>
+    <section class="card">
+      <table>
+        <thead>
+          <tr><th>Collection</th><th>Status</th><th>Coverage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Academic journals</td><td>Available</td><td>Broad match discovery</td></tr>
+          <tr><td>Internet sources</td><td>Available</td><td>Keyword based comparison</td></tr>
+          <tr><td>Institution archive</td><td>Connected</td><td>Internal review history</td></tr>
+          <tr><td>AI writing signals</td><td>Enabled</td><td>Report metadata panel</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
+<script type="module" src="auth-guard.js"></script>
+</body>
+</html>

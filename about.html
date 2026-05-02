@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About CopyShield</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="dashboard.html"><span class="brand-mark">C</span> CopyShield</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-item" href="dashboard.html"><span class="nav-icon">D</span> Dashboard</a>
+      <a class="nav-item" href="reports.html"><span class="nav-icon">R</span> Reports</a>
+      <a class="nav-item" href="sources.html"><span class="nav-icon">S</span> Sources</a>
+      <a class="nav-item" href="team.html"><span class="nav-icon">T</span> Team</a>
+      <a class="nav-item" href="settings.html"><span class="nav-icon">A</span> Settings</a>
+      <a class="nav-item active" href="about.html"><span class="nav-icon">I</span> About</a>
+    </nav>
+    <div class="sidebar-foot">
+      <button class="ghost-btn sign-out-btn" type="button" data-sign-out>Sign Out</button>
+      <div class="status-pill"><b>Workspace</b><br>Academic review mode active</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>About CopyShield</h2>
+        <p>A clear overview of the idea, purpose, interface, and limitations behind this project.</p>
+      </div>
+      <div class="top-actions"><a class="button-like" href="dashboard.html">Open Dashboard</a></div>
+    </div>
+
+    <article class="card about-article">
+      <div class="eyebrow">Project story</div>
+      <h3>CopyShield as a concept</h3>
+
+      <p>CopyShield is a front end project built around the idea of a modern originality review workspace. The purpose of the site is to show how a plagiarism checking product could look and feel when designed like a clean software as a service dashboard. It combines a sign in screen, a document scanning dashboard, a report view, source listings, reviewer pages, settings, and a downloadable report flow. The project is intentionally lightweight and runs in the browser, which makes it easy to open, test, and understand without needing a server, database, account system, or complicated installation process.</p>
+
+      <p>The main design goal is to make document review feel organized instead of stressful. Many academic tools feel crowded, old, or difficult to scan. CopyShield tries to present the same kind of information in a calmer layout: clear navigation on the left, primary actions in the main section, visible status cards, and a report area that separates overview data from source details and deeper review notes. The interface is not trying to be loud or decorative. It is trying to feel practical, focused, and professional, like something a student, teacher, researcher, or academic coordinator might use during repeated review work.</p>
+
+      <p>The dashboard is the center of the experience. A user can choose a text or document file, run a check, and see a generated report. The report includes the document name, word count, character count, uniqueness score, plagiarism percentage, top keyword, source table, database label, AI detection label, executive summary, strongest source, average source match, key terms, source analysis, and recommendations. The page also includes a download button that creates a PDF report. The downloaded report is designed to include the overview, sources, details, and extra analysis together, so the output feels more complete than a single screenshot or a short summary card.</p>
+
+      <p>The upload flow supports simple TXT files and DOCX files. TXT files can be read directly by the browser. DOCX files are parsed with Mammoth, a browser library that extracts raw text from Word documents. This keeps the project simple while still making it feel more useful than a static mockup. After parsing, the app counts words and characters, extracts repeated keywords, creates a uniqueness score, generates source rows, and fills the visible report fields. The current implementation is local and simulated, which means it is suitable for a demo, school project, design prototype, or learning exercise, not for real academic judgment.</p>
+
+      <p>One important design decision is that rescanning the same selected file keeps the same result. Earlier versions changed the score every time the scan button was pressed, which made the output feel unstable. The current version caches a generated report for the selected file, using the file name, size, and last modified time as a signature. If the same file is scanned again, the same score, sources, keywords, and recommendations appear again. If a new file is selected, a new report can be generated. This makes the interface feel more believable and avoids the confusion that happens when a report changes without the document changing.</p>
+
+      <p>The source table is also designed to feel varied. Instead of showing the same pattern repeatedly, the app creates different source titles, source types, domains, years, word counts, and match percentages. It may display journal articles, conference papers, preprints, institutional repositories, thesis chapters, technical reports, literature reviews, or open access papers. The domains are academic sounding and varied, including references such as research portals, journal publishers, archive services, and scholarly platforms. These details help the report look richer and more realistic as a user interface demonstration.</p>
+
+      <p>The report is divided into layers. The overview layer gives the quick answer: document information, uniqueness, and similarity. The sources layer shows where matches appear to come from. The details layer gives scan depth, database size, and detection metadata. The detailed report section adds more narrative information, such as an originality verdict, match level, strongest source, average source match, keyword chips, source analysis, and recommendations. This layered structure is useful because different users care about different levels of detail. A student may want the score first. A teacher may want source rows. A reviewer may want recommendations and risk notes.</p>
+
+      <p>The About page exists to explain the project clearly because a polished interface can sometimes make a prototype look more powerful than it really is. CopyShield looks like a real SaaS product, but the current version does not connect to a real plagiarism database. It does not crawl the internet, query academic publishers, compare against institutional archives, or use a real machine learning model. The labels and generated values are part of the demonstration. This is important because plagiarism detection can affect grades, reputations, publication decisions, and academic trust. A real product in this area would need careful engineering, transparent methods, privacy protection, auditability, and responsible review practices.</p>
+
+      <p>A production plagiarism checker would be much more complex. It would need a backend that securely receives documents, extracts text accurately, breaks the content into comparable passages, normalizes formatting, searches against large indexed collections, ranks matches, identifies quotations, detects citations, filters common phrases, handles multiple languages, and explains why each match matters. It would also need permission controls, storage policies, file deletion rules, institution specific settings, accessibility testing, performance monitoring, and legal review. CopyShield does not attempt to solve all of that. Instead, it focuses on the user experience around such a workflow.</p>
+
+      <p>The visual style uses a restrained green and teal palette because the product theme is about trust, verification, and review. The layout avoids dramatic landing page decoration inside the working app. The sidebar stays simple, the cards are compact, and the report content is arranged for scanning. The goal is not to make the page look like a marketing poster. The goal is to make it feel like a tool someone could use for actual work. The sign in page is more expressive because it introduces the product, but the dashboard becomes more practical once the user enters the workspace.</p>
+
+      <p>The multiple page structure makes the project easier to understand and extend. The app now has separate files for the sign in page, dashboard, reports page, sources page, team page, settings page, and about page. Shared styling lives in a CSS file, while the document scanning and report generation behavior lives in a JavaScript file. This is cleaner than keeping everything in one giant HTML file. It also makes future changes easier. For example, a developer could later replace the fake report generator with a real backend API without redesigning every page from scratch.</p>
+
+      <p>The Reports page represents the idea of a report history. In a real app, it would list previous scans, allow filters, show document owners, provide export status, and maybe include reviewer comments. The Sources page represents the idea of reference coverage. In a production system, this could show connected databases, subscription collections, institutional archives, web indexing status, and source freshness. The Team page represents collaboration, roles, and review permissions. The Settings page represents workspace preferences, such as journal matching, AI detection labels, PDF exports, and source table visibility. These pages are intentionally simple but help the product feel broader than one isolated checker screen.</p>
+
+      <p>The detailed PDF report is an important part of the experience because users often need something they can submit, share, archive, or discuss. A report that only shows a score is not very helpful. A better report includes context: what was checked, what score was generated, which sources appeared, what keywords mattered, what the strongest match was, and what a reviewer should do next. CopyShield now creates a more complete downloadable report by combining the overview, source table, details, and narrative analysis into one export. The PDF is still generated in the browser, but it gives the project a more complete workflow.</p>
+
+      <p>The project can be improved in many ways. The document preview could show real extracted text instead of a styled placeholder. The source rows could link to expanded panels. The recommendations could be grouped by severity. The report history could store previous scans in local storage. The settings toggles could actually change report behavior. The team page could include invite forms or role management. The PDF layout could have a title page and page numbers. A backend could be added later to store reports, perform real similarity matching, and manage users. Each of these improvements would move the project from a polished demo toward a fuller application.</p>
+
+      <p>Even as a demo, CopyShield is useful for learning. It touches many front end ideas: page structure, navigation, CSS layout, responsive design, file input handling, browser based document parsing, state caching, generated content, table rendering, tabbed interfaces, PDF export, and product writing. It also shows how quickly a simple idea can become more believable when the user flow is complete. A small project feels more finished when it has sign in, navigation, settings, report export, and a clear About page. Those details help people understand what the app is meant to be.</p>
+
+      <p>The project should always be presented honestly. It is not a substitute for real plagiarism checking software, academic review, citation judgment, or teacher evaluation. It should not be used to accuse anyone of copying, to approve academic submissions, or to make serious decisions about originality. The numbers are generated for demonstration, the sources are simulated, and the report text is produced from local front end logic. The value is in the design, workflow, and coding practice, not in real detection accuracy.</p>
+
+      <p>CopyShield is therefore best understood as a polished prototype. It shows what an originality review product could look like, how its pages could be organized, and how a downloadable report could be structured. It is made to be readable, easy to navigate, and convincing as a user interface. It gives the feeling of a complete SaaS workspace while staying simple enough to run from static files. That balance makes it useful for presentations, portfolios, classroom demonstrations, and experiments with front end product design.</p>
+
+      <p class="about-note"><strong>Made for fun purpose only.</strong></p>
+    </article>
+  </main>
+</div>
+<script type="module" src="auth-guard.js"></script>
+</body>
+</html>

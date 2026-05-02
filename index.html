@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CopyShield</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="auth-page">
+  <div class="auth-layout">
+    <section class="auth-copy">
+      <div>
+        <div class="brand"><span class="brand-mark">C</span> CopyShield</div>
+        <div class="hero">
+          <h1>Originality workflow for modern academic teams</h1>
+          <p>Review submissions, inspect source patterns, and export polished reports from one calm workspace.</p>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><strong>5M+</strong><span>indexed references</span></div>
+          <div class="metric"><strong>24s</strong><span>average review cycle</span></div>
+          <div class="metric"><strong>98%</strong><span>report clarity score</span></div>
+        </div>
+      </div>
+
+      <div class="product-shot" aria-hidden="true">
+        <div class="shot-toolbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="shot-body">
+          <div class="shot-sidebar">
+            <div class="shot-line"></div>
+            <div class="shot-line short"></div>
+            <div class="shot-line"></div>
+            <div class="shot-line short"></div>
+          </div>
+          <div class="shot-chart">
+            <div class="shot-card"></div>
+            <div class="bar-grid">
+              <div class="bar" style="height:48%"></div>
+              <div class="bar" style="height:72%"></div>
+              <div class="bar" style="height:58%"></div>
+              <div class="bar" style="height:88%"></div>
+              <div class="bar" style="height:63%"></div>
+              <div class="bar" style="height:76%"></div>
+              <div class="bar" style="height:54%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-box">
+        <h2 id="authTitle">Welcome back</h2>
+        <p id="authSubtitle">Sign in to open your review dashboard.</p>
+        <input id="emailInput" placeholder="Email" type="email" autocomplete="email">
+        <input id="passwordInput" placeholder="Password" type="password" autocomplete="current-password">
+        <button id="authSubmit" type="button">Sign In</button>
+        <button id="guestBtn" class="ghost-btn" type="button">Continue as Guest</button>
+        <button id="authModeToggle" class="text-btn" type="button">Create a new account</button>
+        <div id="authMessage" class="login-message"></div>
+        <div class="quiet-note">Made for fun purpose only.</div>
+      </div>
+    </section>
+  </div>
+</main>
+<script type="module" src="firebase-auth.js"></script>
+</body>
+</html>
