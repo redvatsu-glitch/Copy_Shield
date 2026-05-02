@@ -63,6 +63,12 @@
     </section>
   </div>
 </main>
+<script>
+  document.getElementById("guestBtn").addEventListener("click",function(){
+    localStorage.setItem("copyshieldGuest","true");
+    window.location.href="dashboard.html";
+  });
+</script>
 <script type="module" src="firebase-auth.js"></script>
 </body>
 </html>
